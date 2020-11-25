@@ -1,0 +1,18 @@
+{
+  "Name": "message-hello",
+  "Description": "Simple Process Project",
+  "ReleaseNotes": null,
+  "MainWorkflow": "Main.xaml",
+  "Dependencies": {},
+  "ExcludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "ToolVersion": "2.0.2.0",
+  "ProjectVersion": "0.0.0.0",
+  "PackOptions": {},
+  "RuntimeOptions": {},
+  "ProjectDirectory": "C:\\Users\\akauser\\Documents\\akaBot\\message-hello",
+  "ProjectFilePath": "C:\\Users\\akauser\\Documents\\akaBot\\message-hello\\project.json",
+  "ScreenshotsFolder": "C:\\Users\\akauser\\Documents\\akaBot\\message-hello\\.screenshots"
+}
