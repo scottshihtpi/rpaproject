@@ -2,7 +2,10 @@
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:rab="clr-namespace:RCA.Activities.Browser;assembly=RCA.Activities.Browser"
  xmlns:rac="clr-namespace:RCA.Activities.Core;assembly=RCA.Activities.Core"
+ xmlns:ram="clr-namespace:RCA.Activities.Mail;assembly=RCA.Activities.Mail"
+ xmlns:raw="clr-namespace:RCA.Activities.Windows;assembly=RCA.Activities.Windows"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
@@ -64,22 +67,55 @@
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <rac:LogMessage DisplayName="[561867732] Log Message" Level="Info" Message="[&quot;Hello&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_1" />
-    <WriteLine DisplayName="[551297691] WriteLine" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="hello" />
-    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwFQgNGDgIBAUMFQ5cBAgEERAVEcQIBAkNQQ2UCAQVEZ0RuAgED</sads:DebugSymbol.Symbol>
+    <rac:LogMessage DisplayName="[678380608] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;RPA Started&quot;]" />
+    <rab:OpenBrowser DefaultDownloadFolder="{x:Null}" HttpProxy="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" UserName="{x:Null}" BrowserName="Chrome" ContinueOnError="False" DisplayName="[705318138] Open Browser" EnsureCleanSession="False" HideCommandPromptWindow="True" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Maximize="False" QuitBrowserOnCompletedOrFaulted="False" ShowDownloadPrompt="True" Url="https://www.google.com" UseInitialBrowserUrl="False">
+      <rab:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="str" />
+            </Sequence.Variables>
+            <rab:TypeInto Browser="{x:Null}" Comments="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" SearchParameter="{x:Null}" ContinueOnError="False" DisplayName="[736181235] Type Into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_1" SearchMethod="ID" Selector="&lt;html omit:app='chrome.exe' omit:title='Google' /&gt;&lt;webctrl name='q' omit:class='gLFyf gsfi' xpath='//input[@autofocus]' tag='input' /&gt;" Text="taiwan" TimeoutMS="2000" WaitVisible="False" />
+            <raw:SendHotKey Element="{x:Null}" KeyArgument="{x:Null}" Alt="False" Ctrl="False" DisplayName="[842594636] Send Hot Key" sap2010:WorkflowViewState.IdRef="SendHotKey_1" Key="ENTER" Shift="False" Win="False" />
+            <rab:GetText Browser="{x:Null}" Comments="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" SearchParameter="{x:Null}" ContinueOnError="False" DisplayName="[899823809] Get Text" sap2010:WorkflowViewState.IdRef="GetText_1" Result="[str]" SearchMethod="ID" Selector="&lt;html omit:app='chrome.exe' omit:title='taiwan - Google 搜尋' /&gt;&lt;webctrl xpath='//*[@id=&amp;apos;rso&amp;apos;]/div[1]/div/div[2]/div' tag='div' /&gt;" TimeoutMS="2000" WaitVisible="False" />
+            <ram:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="[str]" DisplayName="[958513579] Send SMTP Mail Message" Email="scott.shih@tpisoftware.com" EnableSSL="True" IsBodyHtml="False" Password="abc840322" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="RPATEST" To="scott.shih@tpisoftware.com">
+              <ram:SendMail.Files>
+                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+              </ram:SendMail.Files>
+              <sap2010:WorkflowViewState.IdRef>SendMail_1</sap2010:WorkflowViewState.IdRef>
+            </ram:SendMail>
+          </Sequence>
+        </ActivityAction>
+      </rab:OpenBrowser.Body>
+    </rab:OpenBrowser>
+    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwaRQNfDgIBAUYFRp0BAgEbRwVdFwIBAkZ/RpoBAgEcR8MBR8oBAgEaR7MDR8sDAgEZTQtaFgIBA1ENUewDAgEUUg1S3gECARNTDVPjAwIBDVQNWRwCAQRRogJRtgMCARhRzwNR1QMCARdRmwFRogECARZRvANRxAMCARVTmwJTuwMCARJTxgNTzAMCARFTmgFToQECARBT+AFT/wECAQ5UjwNUqwMCAQxUqgFUsQECAQpUggNUiwMCAQlU6QFUhQICAQhUxAJUyQICAQdU6QJU+QICAQZUswJUvgICAQU=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314,92" />
-      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="314,61.3333333333333" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336,317.333333333333">
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="414,92" />
+      <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="314,96" />
+      <sap2010:ViewStateData Id="SendHotKey_1" sap:VirtualizedContainerService.HintSize="314,22" />
+      <sap2010:ViewStateData Id="GetText_1" sap:VirtualizedContainerService.HintSize="314,68" />
+      <sap2010:ViewStateData Id="SendMail_1" sap:VirtualizedContainerService.HintSize="314,145.333333333333" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,575.333333333333">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Activity1_1" sap:VirtualizedContainerService.HintSize="376,397.333333333333" />
+      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="414,674" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="436,930">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Activity1_1" sap:VirtualizedContainerService.HintSize="476,1010" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
