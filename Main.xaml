@@ -77,7 +77,7 @@
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="str" />
             </Sequence.Variables>
-            <rab:TypeInto Browser="{x:Null}" Comments="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" SearchParameter="{x:Null}" ContinueOnError="False" DisplayName="[736181235] Type Into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_1" SearchMethod="ID" Selector="&lt;html omit:app='chrome.exe' omit:title='Google' /&gt;&lt;webctrl name='q' omit:class='gLFyf gsfi' xpath='//input[@autofocus]' tag='input' /&gt;" Text="taiwan" TimeoutMS="2000" WaitVisible="False" />
+            <rab:TypeInto Browser="{x:Null}" Comments="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" SearchParameter="{x:Null}" ContinueOnError="False" DisplayName="[736181235] Type Into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_1" SearchMethod="ID" Selector="&lt;html omit:app='chrome.exe' omit:title='Google' /&gt;&lt;webctrl name='q' omit:class='gLFyf gsfi' xpath='//input[@autofocus]' tag='input' /&gt;" Text="tpisoftware" TimeoutMS="2000" WaitVisible="False" />
             <raw:SendHotKey Element="{x:Null}" KeyArgument="{x:Null}" Alt="False" Ctrl="False" DisplayName="[842594636] Send Hot Key" sap2010:WorkflowViewState.IdRef="SendHotKey_1" Key="ENTER" Shift="False" Win="False" />
             <rab:GetText Browser="{x:Null}" Comments="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" SearchParameter="{x:Null}" ContinueOnError="False" DisplayName="[899823809] Get Text" sap2010:WorkflowViewState.IdRef="GetText_1" Result="[str]" SearchMethod="ID" Selector="&lt;html omit:app='chrome.exe' omit:title='taiwan - Google 搜尋' /&gt;&lt;webctrl xpath='//*[@id=&amp;apos;rso&amp;apos;]/div[1]/div/div[2]/div' tag='div' /&gt;" TimeoutMS="2000" WaitVisible="False" />
             <ram:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="[str]" DisplayName="[958513579] Send SMTP Mail Message" Email="scott.shih@tpisoftware.com" EnableSSL="True" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="abc840322" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="RPATEST" To="scott.shih@tpisoftware.com">
@@ -89,7 +89,7 @@
         </ActivityAction>
       </rab:OpenBrowser.Body>
     </rab:OpenBrowser>
-    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwaRANdDgIBAUUFRXECARtGBVsXAgECRWdFbgIBHEbDAUbKAQIBGkayA0bKAwIBGUwLWBYCAQNQDVDsAwIBFFENUd4BAgETUg1S4wMCAQ1TDVccAgEEUKICULYDAgEYUM8DUNUDAgEXUJsBUKIBAgEWULwDUMQDAgEVUpsCUrsDAgESUsYDUswDAgERUpoBUqEBAgEQUvgBUv8BAgEOU7wDU9gDAgEMU6oBU7EBAgEKU68DU7gDAgEJU+kBU4UCAgEIU/ECU/YCAgEHU5YDU6YDAgEGU+ACU+sCAgEF</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwaRANdDgIBAUUFRXECARtGBVsXAgECRWdFbgIBHEbDAUbKAQIBGkayA0bKAwIBGUwLWBYCAQNQDVDxAwIBFFENUd4BAgETUg1S4wMCAQ1TDVccAgEEUKICULYDAgEYUNQDUNoDAgEXUJsBUKIBAgEWULwDUMkDAgEVUpsCUrsDAgESUsYDUswDAgERUpoBUqEBAgEQUvgBUv8BAgEOU7wDU9gDAgEMU6oBU7EBAgEKU68DU7gDAgEJU+kBU4UCAgEIU/ECU/YCAgEHU5YDU6YDAgEGU+ACU+sCAgEF</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
