@@ -3,13 +3,14 @@
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
  xmlns:rab="clr-namespace:RCA.Activities.Browser;assembly=RCA.Activities.Browser"
+ xmlns:rac="clr-namespace:RCA.Activities.CSV;assembly=RCA.Activities.Excel"
  xmlns:ram="clr-namespace:RCA.Activities.Mail;assembly=RCA.Activities.Mail"
- xmlns:raw="clr-namespace:RCA.Activities.Windows;assembly=RCA.Activities.Windows"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -32,6 +33,7 @@
       <x:String>System.Xml</x:String>
       <x:String>System.Xml.Linq</x:String>
       <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -66,8 +68,8 @@
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <WriteLine DisplayName="[443333482] WriteLine" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="hello" />
-    <rab:OpenBrowser DefaultDownloadFolder="{x:Null}" HttpProxy="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" UserName="{x:Null}" BrowserName="Chrome" ContinueOnError="False" DisplayName="[705318138] Open Browser" EnsureCleanSession="False" HideCommandPromptWindow="True" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Maximize="False" QuitBrowserOnCompletedOrFaulted="True" ShowDownloadPrompt="True" Url="https://www.google.com" UseInitialBrowserUrl="False">
+    <WriteLine DisplayName="[443333482] WriteLine" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Start PRA Process" />
+    <rab:OpenBrowser DefaultDownloadFolder="{x:Null}" HttpProxy="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" UserName="{x:Null}" BrowserName="Chrome" ContinueOnError="False" DisplayName="[705318138] Open Browser" EnsureCleanSession="False" HideCommandPromptWindow="True" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Maximize="False" QuitBrowserOnCompletedOrFaulted="True" ShowDownloadPrompt="True" Url="https://rate.bot.com.tw/xrt?Lang=zh-TW" UseInitialBrowserUrl="False">
       <rab:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -76,44 +78,45 @@
           <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="str" />
+              <Variable x:TypeArguments="sd:DataTable" Name="rateTb" />
             </Sequence.Variables>
-            <rab:TypeInto Browser="{x:Null}" Comments="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" SearchParameter="{x:Null}" ContinueOnError="False" DisplayName="[736181235] Type Into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_1" SearchMethod="ID" Selector="&lt;html omit:app='chrome.exe' omit:title='Google' /&gt;&lt;webctrl name='q' omit:class='gLFyf gsfi' xpath='//input[@autofocus]' tag='input' /&gt;" Text="tpisoftware" TimeoutMS="2000" WaitVisible="False" />
-            <raw:SendHotKey Element="{x:Null}" KeyArgument="{x:Null}" Alt="False" Ctrl="False" DisplayName="[842594636] Send Hot Key" sap2010:WorkflowViewState.IdRef="SendHotKey_1" Key="ENTER" Shift="False" Win="False" />
-            <rab:GetText Browser="{x:Null}" Comments="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" SearchParameter="{x:Null}" ContinueOnError="False" DisplayName="[899823809] Get Text" sap2010:WorkflowViewState.IdRef="GetText_1" Result="[str]" SearchMethod="ID" Selector="&lt;html omit:app='chrome.exe' omit:title='taiwan - Google 搜尋' /&gt;&lt;webctrl xpath='//*[@id=&amp;apos;rso&amp;apos;]/div[1]/div/div[2]/div' tag='div' /&gt;" TimeoutMS="2000" WaitVisible="False" />
-            <ram:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="[str]" DisplayName="[958513579] Send SMTP Mail Message" Email="scott.shih@tpisoftware.com" EnableSSL="True" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="abc840322" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="RPATEST" To="scott.shih@tpisoftware.com">
+            <rab:ExtractStructuredData ContinueOnError="{x:Null}" Html="{x:Null}" DisplayName="[089359755] Extract Structured Data" Result="[rateTb]" Selector="{}{&#xD;&#xA;  &quot;_forceArray&quot;: true,&#xD;&#xA;  &quot;_xpath&quot;: &quot;//tbody//tr&quot;,&#xD;&#xA;  &quot;幣別&quot;: &quot;./td[1]/div/div[2]&quot;,&#xD;&#xA;  &quot;現金買進&quot;: &quot;./td[2]&quot;,&#xD;&#xA;  &quot;現金賣出&quot;: &quot;./td[3]&quot;,&#xD;&#xA;  &quot;及期買進&quot;: &quot;./td[4]&quot;,&#xD;&#xA;  &quot;及期賣出&quot;: &quot;./td[5]&quot;&#xD;&#xA;}" sap2010:WorkflowViewState.IdRef="ExtractStructuredData_1" />
+            <rac:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[rateTb]" Delimitator="Comma" DisplayName="[392810031] Write Csv File" FilePath="rateTb.csv" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" />
+            <ram:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="This email is an automatic mail sent by Jenkins" DisplayName="[958513579] Send SMTP Mail Message" Email="scott.shih@tpisoftware.com" EnableSSL="True" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="abc840322" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="[Jenkins] RPA Auto Test - 匯率資料" To="scott.shih@tpisoftware.com">
               <ram:SendMail.Files>
-                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">rateTb.csv</InArgument>
+                </scg:List>
               </ram:SendMail.Files>
             </ram:SendMail>
           </Sequence>
         </ActivityAction>
       </rab:OpenBrowser.Body>
     </rab:OpenBrowser>
-    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwaRANdDgIBAUUFRXECARtGBVsXAgECRWdFbgIBHEbDAUbKAQIBGkayA0bKAwIBGUwLWBYCAQNQDVDxAwIBFFENUd4BAgETUg1S4wMCAQ1TDVccAgEEUKICULYDAgEYUNQDUNoDAgEXUJsBUKIBAgEWULwDUMkDAgEVUpsCUrsDAgESUsYDUswDAgERUpoBUqEBAgEQUvgBUv8BAgEOU7wDU9gDAgEMU6oBU7EBAgEKU68DU7gDAgEJU+kBU4UCAgEIU/ECU/YCAgEHU5YDU6YDAgEGU+ACU+sCAgEF</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwWRgNhDgIBAUcFR30CARdIBV8XAgECR2dHegIBGEjDAUjKAQIBFkiyA0jaAwIBFU4LXBYCAQNTDVPRBAIBEVQNVOABAgENVQ1bHAIBBFOgAVOUBAIBFFOMAVOWAQIBElRPVFkCAQ9UoAFUrAECAQ5V/QNVmQQCAQxYOlhEAgELVaoBVdsBAgEKVdkDVfkDAgEJVZMCVa8CAgEIVZsDVaADAgEHVcADVdADAgEGVYoDVZUDAgEF</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="414,61.3333333333333" />
-      <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="314,96" />
-      <sap2010:ViewStateData Id="SendHotKey_1" sap:VirtualizedContainerService.HintSize="314,22" />
-      <sap2010:ViewStateData Id="GetText_1" sap:VirtualizedContainerService.HintSize="314,68" />
+      <sap2010:ViewStateData Id="ExtractStructuredData_1" sap:VirtualizedContainerService.HintSize="314,68" />
+      <sap2010:ViewStateData Id="WriteCsvFile_1" sap:VirtualizedContainerService.HintSize="314,86.6666666666667" />
       <sap2010:ViewStateData Id="SendMail_1" sap:VirtualizedContainerService.HintSize="314,145.333333333333" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,575.333333333333">
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,504">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="414,674" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="436,899.333333333333">
+      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="414,602.666666666667" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="436,828">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Activity1_1" sap:VirtualizedContainerService.HintSize="476,979.333333333333" />
+      <sap2010:ViewStateData Id="Activity1_1" sap:VirtualizedContainerService.HintSize="476,908" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
