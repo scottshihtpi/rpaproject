@@ -50,8 +50,8 @@
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <rac:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" MessageBoxDuration="{x:Null}" Buttons="Ok" DisplayName="[881540896] Message Box" Text="hello world" TopMost="True" sap2010:WorkflowViewState.IdRef="MessageBox_1" />
-    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwDNAM3DgIBATUFNeQBAgECNZYBNaMBAgED</sads:DebugSymbol.Symbol>
+    <rac:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" MessageBoxDuration="{x:Null}" Buttons="Ok" DisplayName="[881540896] Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="hello world222" TopMost="True" />
+    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwDNAM3DgIBATUFNecBAgECNcUBNdUBAgED</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
