@@ -68,7 +68,7 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
     <rac:LogMessage DisplayName="[678380608] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;RPA Started&quot;]" />
-    <rab:OpenBrowser DefaultDownloadFolder="{x:Null}" HttpProxy="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" UserName="{x:Null}" BrowserName="Chrome" ContinueOnError="False" DisplayName="[705318138] Open Browser" EnsureCleanSession="False" HideCommandPromptWindow="True" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Maximize="False" QuitBrowserOnCompletedOrFaulted="False" ShowDownloadPrompt="True" Url="https://www.google.com" UseInitialBrowserUrl="False">
+    <rab:OpenBrowser DefaultDownloadFolder="{x:Null}" HttpProxy="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" UserName="{x:Null}" BrowserName="Chrome" ContinueOnError="False" DisplayName="[705318138] Open Browser" EnsureCleanSession="False" HideCommandPromptWindow="True" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Maximize="False" QuitBrowserOnCompletedOrFaulted="True" ShowDownloadPrompt="True" Url="https://www.google.com" UseInitialBrowserUrl="False">
       <rab:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -81,17 +81,16 @@
             <rab:TypeInto Browser="{x:Null}" Comments="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" SearchParameter="{x:Null}" ContinueOnError="False" DisplayName="[736181235] Type Into" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_1" SearchMethod="ID" Selector="&lt;html omit:app='chrome.exe' omit:title='Google' /&gt;&lt;webctrl name='q' omit:class='gLFyf gsfi' xpath='//input[@autofocus]' tag='input' /&gt;" Text="taiwan" TimeoutMS="2000" WaitVisible="False" />
             <raw:SendHotKey Element="{x:Null}" KeyArgument="{x:Null}" Alt="False" Ctrl="False" DisplayName="[842594636] Send Hot Key" sap2010:WorkflowViewState.IdRef="SendHotKey_1" Key="ENTER" Shift="False" Win="False" />
             <rab:GetText Browser="{x:Null}" Comments="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" SearchParameter="{x:Null}" ContinueOnError="False" DisplayName="[899823809] Get Text" sap2010:WorkflowViewState.IdRef="GetText_1" Result="[str]" SearchMethod="ID" Selector="&lt;html omit:app='chrome.exe' omit:title='taiwan - Google 搜尋' /&gt;&lt;webctrl xpath='//*[@id=&amp;apos;rso&amp;apos;]/div[1]/div/div[2]/div' tag='div' /&gt;" TimeoutMS="2000" WaitVisible="False" />
-            <ram:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="[str]" DisplayName="[958513579] Send SMTP Mail Message" Email="scott.shih@tpisoftware.com" EnableSSL="True" IsBodyHtml="False" Password="abc840322" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="RPATEST" To="scott.shih@tpisoftware.com">
+            <ram:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="[str]" DisplayName="[958513579] Send SMTP Mail Message" Email="scott.shih@tpisoftware.com" EnableSSL="True" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="abc840322" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="RPATEST" To="scott.shih@tpisoftware.com">
               <ram:SendMail.Files>
                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
               </ram:SendMail.Files>
-              <sap2010:WorkflowViewState.IdRef>SendMail_1</sap2010:WorkflowViewState.IdRef>
             </ram:SendMail>
           </Sequence>
         </ActivityAction>
       </rab:OpenBrowser.Body>
     </rab:OpenBrowser>
-    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwaRQNfDgIBAUYFRp0BAgEbRwVdFwIBAkZ/RpoBAgEcR8MBR8oBAgEaR7MDR8sDAgEZTQtaFgIBA1ENUewDAgEUUg1S3gECARNTDVPjAwIBDVQNWRwCAQRRogJRtgMCARhRzwNR1QMCARdRmwFRogECARZRvANRxAMCARVTmwJTuwMCARJTxgNTzAMCARFTmgFToQECARBT+AFT/wECAQ5UjwNUqwMCAQxUqgFUsQECAQpUggNUiwMCAQlU6QFUhQICAQhUxAJUyQICAQdU6QJU+QICAQZUswJUvgICAQU=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwaRQNeDgIBAUYFRp0BAgEbRwVcFwIBAkZ/RpoBAgEcR8MBR8oBAgEaR7IDR8oDAgEZTQtZFgIBA1ENUewDAgEUUg1S3gECARNTDVPjAwIBDVQNWBwCAQRRogJRtgMCARhRzwNR1QMCARdRmwFRogECARZRvANRxAMCARVTmwJTuwMCARJTxgNTzAMCARFTmgFToQECARBT+AFT/wECAQ5UvANU2AMCAQxUqgFUsQECAQpUrwNUuAMCAQlU6QFUhQICAQhU8QJU9gICAQdUlgNUpgMCAQZU4AJU6wICAQU=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
