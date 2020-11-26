@@ -69,7 +69,7 @@
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <rac:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" MessageBoxDuration="{x:Null}" Buttons="Ok" DisplayName="[400054673] Message Box" Text="hi" TopMost="True" sap2010:WorkflowViewState.IdRef="MessageBox_1" />
+    <rac:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" MessageBoxDuration="{x:Null}" Buttons="Ok" DisplayName="[400054673] Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="hello world" TopMost="True" />
     <WriteLine DisplayName="[443333482] WriteLine" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Start PRA Process" />
     <rab:OpenBrowser DefaultDownloadFolder="{x:Null}" HttpProxy="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" UserName="{x:Null}" BrowserName="Chrome" ContinueOnError="False" DisplayName="[705318138] Open Browser" EnsureCleanSession="False" HideCommandPromptWindow="True" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Maximize="False" QuitBrowserOnCompletedOrFaulted="True" ShowDownloadPrompt="True" Url="https://rate.bot.com.tw/xrt?Lang=zh-TW" UseInitialBrowserUrl="False">
       <rab:OpenBrowser.Body>
@@ -95,7 +95,7 @@
         </ActivityAction>
       </rab:OpenBrowser.Body>
     </rab:OpenBrowser>
-    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwYRwNjDgIBAUgFSNsBAgEZSQVJfQIBF0oFYRcCAQJIlgFImgECARpJZ0l6AgEYSsMBSsoBAgEWSrIDStoDAgEVUAteFgIBA1UNVdEEAgERVg1W4QECAQ1XDV0cAgEEVdoBVc4EAgEUVcYBVdABAgESVlBWWgIBD1ahAVatAQIBDlf9A1eZBAIBDFo6WkQCAQtXqgFX2wECAQpX2QNX+QMCAQlXkwJXrwICAQhXmwNXoAMCAQdXwANX0AMCAQZXigNXlQMCAQU=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwYRwNjDgIBAUgFSOQBAgEZSQVJfQIBF0oFYRcCAQJIxQFI0gECARpJZ0l6AgEYSsMBSsoBAgEWSrIDStoDAgEVUAteFgIBA1UNVdEEAgERVg1W4QECAQ1XDV0cAgEEVdoBVc4EAgEUVcYBVdABAgESVlBWWgIBD1ahAVatAQIBDlf9A1eZBAIBDFo6WkQCAQtXqgFX2wECAQpX2QNX+QMCAQlXkwJXrwICAQhXmwNXoAMCAQdXwANX0AMCAQZXigNXlQMCAQU=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
