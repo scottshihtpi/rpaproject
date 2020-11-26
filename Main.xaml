@@ -3,8 +3,7 @@
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
  xmlns:rab="clr-namespace:RCA.Activities.Browser;assembly=RCA.Activities.Browser"
- xmlns:rac="clr-namespace:RCA.Activities.Core;assembly=RCA.Activities.Core"
- xmlns:rac1="clr-namespace:RCA.Activities.CSV;assembly=RCA.Activities.Excel"
+ xmlns:rac="clr-namespace:RCA.Activities.CSV;assembly=RCA.Activities.Excel"
  xmlns:ram="clr-namespace:RCA.Activities.Mail;assembly=RCA.Activities.Mail"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
@@ -12,6 +11,7 @@
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
  xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,7 +69,6 @@
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <rac:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" MessageBoxDuration="{x:Null}" Buttons="Ok" DisplayName="[400054673] Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="hellq" TopMost="True" />
     <WriteLine DisplayName="[443333482] WriteLine" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Start PRA Process" />
     <rab:OpenBrowser DefaultDownloadFolder="{x:Null}" HttpProxy="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" UserName="{x:Null}" BrowserName="Chrome" ContinueOnError="False" DisplayName="[705318138] Open Browser" EnsureCleanSession="False" HideCommandPromptWindow="True" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Maximize="False" QuitBrowserOnCompletedOrFaulted="True" ShowDownloadPrompt="True" Url="https://rate.bot.com.tw/xrt?Lang=zh-TW" UseInitialBrowserUrl="False">
       <rab:OpenBrowser.Body>
@@ -81,13 +80,15 @@
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="str" />
               <Variable x:TypeArguments="sd:DataTable" Name="rateTb" />
+              <Variable x:TypeArguments="sd1:Image" Name="img" />
             </Sequence.Variables>
-            <rab:ExtractStructuredData ContinueOnError="{x:Null}" Html="{x:Null}" DisplayName="[089359755] Extract Structured Data" sap2010:WorkflowViewState.IdRef="ExtractStructuredData_1" Result="[rateTb]" Selector="{}{&#xD;&#xA;  &quot;_forceArray&quot;: true,&#xD;&#xA;  &quot;_xpath&quot;: &quot;//tbody//tr&quot;,&#xD;&#xA;  &quot;幣別&quot;: &quot;./td[1]/div/div[2]&quot;,&#xD;&#xA;  &quot;現金買進&quot;: &quot;./td[2]&quot;,&#xD;&#xA;  &quot;現金賣出&quot;: &quot;./td[3]&quot;,&#xD;&#xA;  &quot;及期買進&quot;: &quot;./td[4]&quot;,&#xD;&#xA;  &quot;及期賣出&quot;: &quot;./td[5]&quot;&#xD;&#xA;}" />
-            <rac1:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[rateTb]" Delimitator="Comma" DisplayName="[392810031] Write Csv File" FilePath="rateTb.csv" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" />
+            <rab:ExtractStructuredData ContinueOnError="{x:Null}" Html="{x:Null}" DisplayName="[089359755] Extract Structured Data" sap2010:WorkflowViewState.IdRef="ExtractStructuredData_1" Result="[rateTb]" Selector="{}{&#xA;  &quot;_forceArray&quot;: true,&#xA;  &quot;_xpath&quot;: &quot;//tbody//tr&quot;,&#xA;  &quot;幣別&quot;: &quot;./td[1]/div/div[2]&quot;,&#xA;  &quot;現金買進&quot;: &quot;./td[2]&quot;,&#xA;  &quot;現金賣出&quot;: &quot;./td[3]&quot;,&#xA;  &quot;及期買進&quot;: &quot;./td[4]&quot;,&#xA;  &quot;及期賣出&quot;: &quot;./td[5]&quot;&#xA;}" />
+            <rac:WriteCsvFile Encoding="{x:Null}" AddHeaders="True" DataTable="[rateTb]" Delimitator="Comma" DisplayName="[392810031] Write Csv File" FilePath="rateTb.csv" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" />
             <ram:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="This email is an automatic mail sent by Jenkins" DisplayName="[958513579] Send SMTP Mail Message" Email="scott.shih@tpisoftware.com" EnableSSL="True" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="abc840322" Port="465" SecureConnection="Auto" Server="smtp.gmail.com" Subject="[Jenkins] RPA Auto Test - 匯率資料" To="scott.shih@tpisoftware.com">
               <ram:SendMail.Files>
                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                   <InArgument x:TypeArguments="x:String">rateTb.csv</InArgument>
+                  <InArgument x:TypeArguments="x:String">img.png</InArgument>
                 </scg:List>
               </ram:SendMail.Files>
             </ram:SendMail>
@@ -95,15 +96,14 @@
         </ActivityAction>
       </rab:OpenBrowser.Body>
     </rab:OpenBrowser>
-    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwYRwNjDgIBAUgFSN4BAgEZSQVJfQIBF0oFYRcCAQJIxQFIzAECARpJZ0l6AgEYSsMBSsoBAgEWSrIDStoDAgEVUAteFgIBA1UNVdEEAgERVg1W4QECAQ1XDV0cAgEEVdoBVc4EAgEUVcYBVdABAgESVlBWWgIBD1ahAVatAQIBDlf9A1eZBAIBDFo6WkQCAQtXqgFX2wECAQpX2QNX+QMCAQlXkwJXrwICAQhXmwNXoAMCAQdXwANX0AMCAQZXigNXlQMCAQU=</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwXRwNkDgIBAUgFSH0CARhJBWIXAgECSGdIegIBGUnDAUnKAQIBF0myA0naAwIBFk8LXxYCAQNVDVWpBAIBElYNVuABAgEOVw1eHAIBBFXaAVWmBAIBFVXGAVXQAQIBE1ZPVlkCARBWoAFWrAECAQ9bOltBAgENV/0DV5kEAgEMWjpaRAIBC1eqAVfbAQIBClfZA1f5AwIBCVeTAlevAgIBCFebA1egAwIBB1fAA1fQAwIBBleKA1eVAwIBBQ==</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="MessageBox_1" sap:VirtualizedContainerService.HintSize="414,58.6666666666667" />
-      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="414,61.3333333333333" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="414,61" />
       <sap2010:ViewStateData Id="ExtractStructuredData_1" sap:VirtualizedContainerService.HintSize="314,68" />
-      <sap2010:ViewStateData Id="WriteCsvFile_1" sap:VirtualizedContainerService.HintSize="314,86.6666666666667" />
-      <sap2010:ViewStateData Id="SendMail_1" sap:VirtualizedContainerService.HintSize="314,145.333333333333" />
+      <sap2010:ViewStateData Id="WriteCsvFile_1" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="SendMail_1" sap:VirtualizedContainerService.HintSize="314,145" />
       <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,504">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -111,15 +111,15 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="414,602.666666666667" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="436,926.666666666667">
+      <sap2010:ViewStateData Id="OpenBrowser_1" sap:VirtualizedContainerService.HintSize="414,603" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="436,828">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Activity1_1" sap:VirtualizedContainerService.HintSize="476,1006.66666666667" />
+      <sap2010:ViewStateData Id="Activity1_1" sap:VirtualizedContainerService.HintSize="476,908" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
