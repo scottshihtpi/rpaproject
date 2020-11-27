@@ -69,7 +69,7 @@
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <WriteLine DisplayName="[443333482] WriteLine2" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Start PRA Process" />
+    <WriteLine DisplayName="[443333482] WriteLine" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Start PRA Process" />
     <rab:OpenBrowser DefaultDownloadFolder="{x:Null}" HttpProxy="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" UserName="{x:Null}" BrowserName="Chrome" ContinueOnError="False" DisplayName="[705318138] Open Browser" EnsureCleanSession="False" HideCommandPromptWindow="True" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Maximize="False" QuitBrowserOnCompletedOrFaulted="True" ShowDownloadPrompt="True" Url="https://rate.bot.com.tw/xrt?Lang=zh-TW" UseInitialBrowserUrl="False">
       <rab:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
@@ -96,7 +96,7 @@
         </ActivityAction>
       </rab:OpenBrowser.Body>
     </rab:OpenBrowser>
-    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwXRwNkDgIBAUgFSH4CARhJBWIXAgECSGhIewIBGUnDAUnKAQIBF0myA0naAwIBFk8LXxYCAQNVDVWpBAIBElYNVuABAgEOVw1eHAIBBFXaAVWmBAIBFVXGAVXQAQIBE1ZPVlkCARBWoAFWrAECAQ9bOltBAgENV/0DV5kEAgEMWjpaRAIBC1eqAVfbAQIBClfZA1f5AwIBCVeTAlevAgIBCFebA1egAwIBB1fAA1fQAwIBBleKA1eVAwIBBQ==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>dzlDOlxVc2Vyc1xha2F1c2VyXERvY3VtZW50c1xha2FCb3RcbWVzc2FnZS1oZWxsb1xNYWluLnhhbWwXRwNkDgIBAUgFSH0CARhJBWIXAgECSGdIegIBGUnDAUnKAQIBF0myA0naAwIBFk8LXxYCAQNVDVWpBAIBElYNVuABAgEOVw1eHAIBBFXaAVWmBAIBFVXGAVXQAQIBE1ZPVlkCARBWoAFWrAECAQ9bOltBAgENV/0DV5kEAgEMWjpaRAIBC1eqAVfbAQIBClfZA1f5AwIBCVeTAlevAgIBCFebA1egAwIBB1fAA1fQAwIBBleKA1eVAwIBBQ==</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
