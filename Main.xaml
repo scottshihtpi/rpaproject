@@ -70,7 +70,7 @@
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <rac:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" MessageBoxDuration="{x:Null}" Buttons="Ok" DisplayName="[298852788] Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="hello34" TopMost="True" />
+    <rac:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" MessageBoxDuration="{x:Null}" Buttons="Ok" DisplayName="[298852788] Message Box" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="hello35" TopMost="True" />
     <WriteLine DisplayName="[443333482] WriteLine" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Start PRA Process." />
     <rab:OpenBrowser DefaultDownloadFolder="{x:Null}" HttpProxy="{x:Null}" Password="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" UserName="{x:Null}" BrowserName="Chrome" ContinueOnError="False" DisplayName="[705318138] Open Browser" EnsureCleanSession="False" HideCommandPromptWindow="True" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Maximize="False" QuitBrowserOnCompletedOrFaulted="True" ShowDownloadPrompt="True" Url="https://rate.bot.com.tw/xrt?Lang=zh-TW" UseInitialBrowserUrl="False">
       <rab:OpenBrowser.Body>
@@ -122,7 +122,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Activity1_1" sap:VirtualizedContainerService.HintSize="476,1007.33333333333" />
+      <sap2010:ViewStateData Id="Activity1_1" sap:VirtualizedContainerService.HintSize="476,1047.33333333333" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>
